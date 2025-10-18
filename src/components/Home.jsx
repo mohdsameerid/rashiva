@@ -37,7 +37,7 @@ const Home = ({ setActiveSection }) => {
         <div className="animate-fade-in">
             <div className="text-center mb-12">
                 <h1 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-yellow-200 via-pink-200 to-purple-200 bg-clip-text text-transparent">
-                    Welcome to Astro Guru
+                    Welcome to Rashiva
                 </h1>
                 <p className="text-xl text-purple-200 max-w-2xl mx-auto">
                     Your personal cosmic guide to understanding yourself and the universe. Discover insights, find compatibility, and explore your destiny.
@@ -63,20 +63,6 @@ const Home = ({ setActiveSection }) => {
                 ))}
             </div>
 
-            <div className="mt-16 text-center">
-                <div className="bg-white/5 backdrop-blur-lg rounded-2xl p-8 max-w-3xl mx-auto border border-white/10">
-                    <h3 className="text-2xl font-bold mb-4 text-yellow-200">How to Get Started</h3>
-                    <p className="text-purple-100 mb-4">
-                        To unlock the full power of Astro Guru, you'll need a Google Gemini API key. It's free and easy to get!
-                    </p>
-                    <ol className="text-left text-purple-100 space-y-2 max-w-xl mx-auto">
-                        <li>1. Visit the Google AI Studio</li>
-                        <li>2. Sign in with your Google account</li>
-                        <li>3. Generate your free API key</li>
-                        <li>4. Enter it in the settings when prompted</li>
-                    </ol>
-                </div>
-            </div>
         </div>
     );
 };

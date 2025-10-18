@@ -15,7 +15,7 @@ const Chat = ({ apiKey }) => {
             setMessages([
                 {
                     role: 'assistant',
-                    content: 'Namaste! I am Astro Guru, your spiritual guide through the cosmic realm. How may I illuminate your path today?'
+                    content: 'Namaste! I am Rashiva, your spiritual guide through the cosmic realm. How may I illuminate your path today?'
                 }
             ]);
         }
@@ -67,7 +67,7 @@ const Chat = ({ apiKey }) => {
             setMessages([
                 {
                     role: 'assistant',
-                    content: 'Namaste! I am Astro Guru, your spiritual guide through the cosmic realm. How may I illuminate your path today?'
+                    content: 'Namaste! I am Rashiva, your spiritual guide through the cosmic realm. How may I illuminate your path today?'
                 }
             ]);
             localStorage.removeItem('astro-chat-history');
@@ -79,7 +79,7 @@ const Chat = ({ apiKey }) => {
             <div className="bg-white/10 backdrop-blur-lg rounded-t-2xl p-4 border border-white/20 border-b-0 flex justify-between items-center">
                 <div>
                     <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-                        <span>💫</span> Chat with Astro Guru
+                        <span>💫</span> Chat with Rashiva
                     </h2>
                     <p className="text-purple-200 text-sm">Your spiritual AI guide</p>
                 </div>
@@ -106,7 +106,7 @@ const Chat = ({ apiKey }) => {
                             {message.role === 'assistant' && (
                                 <div className="flex items-center gap-2 mb-2 text-yellow-200">
                                     <span className="text-xl">🔮</span>
-                                    <span className="font-semibold text-sm">Astro Guru</span>
+                                    <span className="font-semibold text-sm">Rashiva</span>
                                 </div>
                             )}
                             <p className="whitespace-pre-wrap leading-relaxed">{message.content}</p>
@@ -119,7 +119,7 @@ const Chat = ({ apiKey }) => {
                         <div className="bg-white/10 rounded-2xl p-4 border border-white/20">
                             <div className="flex items-center gap-2 mb-2 text-yellow-200">
                                 <span className="text-xl">🔮</span>
-                                <span className="font-semibold text-sm">Astro Guru</span>
+                                <span className="font-semibold text-sm">Rashiva</span>
                             </div>
                             <div className="flex gap-2 items-center text-purple-200">
                                 <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce"></div>
