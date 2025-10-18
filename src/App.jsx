@@ -149,7 +149,7 @@ function App() {
       </main>
 
       <footer className="mt-16 py-6 text-center text-purple-200 border-t border-white/10">
-        <p className="text-sm">Made by Mohd Samir Idrishi 🌙</p>
+        <p className="text-sm">Made by Samir 🌙</p>
       </footer>
 
       {showApiKeyModal && (
