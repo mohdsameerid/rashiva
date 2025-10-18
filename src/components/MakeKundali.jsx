@@ -33,8 +33,8 @@ const MakeKundali = ({ apiKey }) => {
 
         setIsLoading(true);
         setResult(null);
-
         try {
+            setIsLoading(true);
             const interpretation = await interpretKundali(
                 formData.name,
                 formData.dob,
@@ -44,7 +44,10 @@ const MakeKundali = ({ apiKey }) => {
             setResult(interpretation);
         } catch (error) {
             console.error('Error generating Kundali interpretation:', error);
-            alert('Error generating Kundali interpretation. Please check your API key and try again.');
+
+            // Show more helpful message if available
+            const message = error?.message || 'Unknown error occurred';
+            alert(`Error generating Kundali interpretation: ${message}`);
         } finally {
             setIsLoading(false);
         }
