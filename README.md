@@ -16,6 +16,7 @@ Rashiva is an AI-powered astrologer application built with **React.js** and **Go
 
 ## Demo
 
-![Rashiva Demo Screenshot](./assets/screenshot.png)  
+![Rashiva Demo Screenshot](![Rashiva Demo Screenshot](https://raw.githubusercontent.com/mohdsameerid/rashiva/master/src/assets/screenshot.png)
+)  
 
 ---
