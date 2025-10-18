@@ -129,7 +129,7 @@ function App() {
                   <span className="font-semibold">{item.label}</span>
                 </button>
               ))}
-              <button
+              {/* <button
                 onClick={() => {
                   setShowApiKeyModal(true);
                   setIsMobileMenuOpen(false);
@@ -138,7 +138,7 @@ function App() {
               >
                 <span>{apiKey ? '✓' : '⚙️'}</span>
                 <span className="font-semibold">Settings</span>
-              </button>
+              </button> */}
             </div>
           )}
         </div>
