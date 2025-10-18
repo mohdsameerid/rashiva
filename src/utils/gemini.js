@@ -8,38 +8,91 @@ export const initializeGemini = (apiKey) => {
 };
 
 // Generate Astrologer response
-export const generateAstroResponse = async (prompt, context = '') => {
+export const generateAstroResponse = async (prompt, context = '', contentLength = 250) => {
     if (!genAI) {
         throw new Error('Gemini API not initialized. Please provide your API key.');
     }
 
-    // Use the working model
     const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
-    const astroContext = `You are a wise and friendly astrologer named Rashiva. You provide spiritual guidance,
-astrological insights, and cosmic wisdom with warmth and empathy. You speak in a gentle, mystical tone but remain
-practical and helpful. ${context}`;
+    const astroContext = `
+You are Rashiva — a friendly, human-like astrologer.
+Speak in short, natural messages (${contentLength} characters). 
+Sound warm, intuitive, and curious — like a person chatting, not lecturing.
+Keep replies simple, heartfelt, and real. Avoid heavy poetic tone.
+If question isn’t about astrology, gently bring user back.
+End each reply with a small, relevant astrology question.
+Use small pauses like “hmm”, “I feel”, “dear”, or “let’s see”.
+Example tone:
+User: When will I marry?
+Rashiva: Hmm, I sense marriage vibes growing stronger soon, maybe late next year. You seem emotionally ready for it. What city were you born in, dear?
+${context}
+`;
 
-    const fullPrompt = `${astroContext}\n\nUser: ${prompt}\n\nRashiva:`;
+    const fullPrompt = `
+${astroContext}
+
+User: ${prompt}
+
+Rashiva:
+`;
 
     try {
         const result = await model.generateContent(fullPrompt);
         const response = await result.response;
-        return response.text(); // Extract text from response
+        const text = response.text().trim();
+        return text;
     } catch (error) {
         console.error('Error generating response:', error);
         throw error;
     }
 };
 
+
 // Generate Kundali interpretation
 export const interpretKundali = async (name, dob, tob, pob) => {
-    const prompt = `A person named ${name} was born on ${dob} at ${tob} in ${pob}.
-Please provide a detailed birth chart interpretation including their zodiac sign, sun sign, moon sign,
-personality traits, strengths, weaknesses, and life path guidance. Make it personal and insightful.`;
+    if (!genAI) {
+        throw new Error('Gemini API not initialized. Please provide your API key.');
+    }
 
-    return generateAstroResponse(prompt, 'Focus on creating a comprehensive Kundali reading.');
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
+
+    const astroContext = `
+You are Rashiva — a warm, intuitive human astrologer.
+You speak like you're personally talking to the person in front of you, not reading a script.
+Keep your tone gentle, mystical, and deeply empathetic.
+Explain insights in 250–400 characters per section.
+Cover zodiac sign, sun sign, moon sign, personality, emotional traits, strengths, weaknesses, and life guidance.
+Blend accuracy with intuition. 
+Avoid robotic lists — make it flow naturally, as a personal reading.
+End with a small.
+`;
+
+    const prompt = `
+A person named ${name} was born on ${dob} at ${tob} in ${pob}.
+Provide a conversational and personal Kundali interpretation.
+Describe their astrological makeup with warmth and depth.
+`;
+
+    const fullPrompt = `
+${astroContext}
+
+User: ${prompt}
+
+Rashiva:
+`;
+
+    try {
+        const result = await model.generateContent(fullPrompt);
+        const response = await result.response;
+        const text = response.text().trim();
+        return text;
+    } catch (error) {
+        console.error('Error generating Kundali:', error);
+        throw error;
+    }
 };
+
 
 
 export const matchKundali = async (person1, person2) => {
@@ -50,13 +103,48 @@ export const matchKundali = async (person1, person2) => {
   about their relationship dynamics, emotional connection, strengths as a couple, potential challenges,
   and advice for harmony.`;
 
-    return generateAstroResponse(prompt, 'Focus on relationship compatibility and cosmic connection.');
+    return generateAstroResponse(prompt, 'Focus on relationship compatibility and cosmic connection.', 500);
+};
+
+export const generateZodiacInsightsResponse = async (prompt, context = '') => {
+    if (!genAI) {
+        throw new Error('Gemini API not initialized. Please provide your API key.');
+    }
+
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
+
+    const astroContext = `
+         You are Rashiva — a warm, conversational astrologer who speaks like a real person.
+         You share zodiac insights with emotion, empathy, and light mysticism — not robotic lists.
+         Each response should sound natural, insightful, and about 1000 characters long.
+         ${context}
+         `;
+
+    const fullPrompt = `
+         ${astroContext}
+         
+         User: ${prompt}
+         
+         Rashiva:
+   `;
+
+    try {
+        const result = await model.generateContent(fullPrompt);
+        const response = await result.response;
+        const text = response.text().trim();
+        return text;
+    } catch (error) {
+        console.error('Error generating response:', error);
+        throw error;
+    }
 };
 
 export const getZodiacInsights = async (zodiacSign) => {
-    const prompt = `Tell me everything about the ${zodiacSign} zodiac sign. Include personality traits,
-  strengths, weaknesses, love life, career prospects, lucky numbers, lucky colors, and advice for personal growth.
-  Make it detailed and insightful.`;
+    const prompt = `
+             Ah, let's talk about ${zodiacSign}. 
+             Describe its personality, emotional nature, strengths, challenges, love life, career energy, lucky color and number, and one gentle advice — 
+             but say it conversationally, as if Rashiva is speaking directly to the user.
+         `;
 
-    return generateAstroResponse(prompt, 'Provide comprehensive zodiac sign analysis.');
+    return generateZodiacInsightsResponse(prompt, `Provide human-like insights about ${zodiacSign} sign.`);
 };

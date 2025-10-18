@@ -3,13 +3,13 @@ import React from 'react';
 
 const Home = ({ setActiveSection }) => {
     const features = [
-        // {
-        //     id: 'chat',
-        //     title: 'Chat with AI Astrologer',
-        //     description: 'Have a one-on-one conversation with our spiritual AI guide. Ask questions, seek guidance, and explore the cosmos.',
-        //     icon: '💬',
-        //     gradient: 'from-purple-500 to-pink-500'
-        // },
+        {
+            id: 'chat',
+            title: 'Chat with AI Astrologer',
+            description: 'Have a one-on-one conversation with our spiritual AI guide. Ask questions, seek guidance, and explore the cosmos.',
+            icon: '💬',
+            gradient: 'from-purple-500 to-pink-500'
+        },
         {
             id: 'make-kundali',
             title: 'Make Your Kundali',

@@ -36,7 +36,7 @@ const KnowYourself = ({ apiKey }) => {
             setResult(insights);
         } catch (error) {
             console.error('Error generating zodiac insights:', error);
-            alert('Error generating zodiac insights. Please check your API key and try again.');
+            alert('Error generating zodiac insights. Please check your connection and try again.');
             setSelectedSign('');
         } finally {
             setIsLoading(false);

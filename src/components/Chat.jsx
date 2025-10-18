@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
+import { generateAstroResponse } from '../utils/gemini';
 
 const Chat = ({ apiKey }) => {
     const [messages, setMessages] = useState([]);
@@ -42,13 +43,13 @@ const Chat = ({ apiKey }) => {
         setIsTyping(true);
 
         try {
-            const response = true; // call api
+            const response = await generateAstroResponse(input);
             setMessages(prev => [...prev, { role: 'assistant', content: response }]);
         } catch (error) {
             console.error('Error generating response:', error);
             setMessages(prev => [...prev, {
                 role: 'assistant',
-                content: 'I apologize, but I am having trouble connecting to the cosmic energies right now. Please check your API key and try again.'
+                content: 'I apologize, but I am having trouble connecting to the cosmic energies right now. Please check your internet or refresh the page.'
             }]);
         } finally {
             setIsTyping(false);
