@@ -65,7 +65,12 @@ function App() {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-3">
               <span className="text-3xl">🔮</span>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-yellow-200 to-purple-200 bg-clip-text text-transparent">
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-yellow-200 to-purple-200 bg-clip-text text-transparent cursor-pointer"
+                onClick={() => {
+                  setActiveSection(navItems[0].id);
+                  setIsMobileMenuOpen(false);
+                }}
+              >
                 Rashiva
               </h1>
             </div>
@@ -149,7 +154,7 @@ function App() {
       </main>
 
       <footer className="mt-16 py-6 text-center text-purple-200 border-t border-white/10">
-        <p className="text-sm">Made by Mohd Samir Idrishi 🌙</p>
+        <p className="text-sm">Made by Samir 🌙</p>
       </footer>
 
       {showApiKeyModal && (
