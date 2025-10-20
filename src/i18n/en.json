@@ -1,0 +1,139 @@
+{
+    "welcome": "Welcome to Rashiva",
+    "subtitle": "Your personal cosmic guide to understanding yourself and the universe. Discover insights, find compatibility, and explore your destiny.",
+    "features": {
+        "chat": {
+            "title": "Chat with AI Astrologer",
+            "description": "Have a one-on-one conversation with our spiritual AI guide. Ask questions, seek guidance, and explore the cosmos."
+        },
+        "make-kundali": {
+            "title": "Make Your Kundali",
+            "description": "Generate your personalized birth chart and receive deep insights about your personality and life path."
+        },
+        "know-yourself": {
+            "title": "Know Yourself",
+            "description": "Explore your zodiac sign and uncover the secrets of your cosmic identity."
+        }
+    },
+    "exploreNow": "Explore Now",
+    "nav": {
+        "home": "Home",
+        "chat": "Chat",
+        "make-kundali": "Make Kundali",
+        "know-yourself": "Know Yourself"
+    },
+    "brand": "Rashiva",
+    "makeKundali": {
+        "title": "⭐ Make Your Kundali",
+        "subtitle": "Discover your cosmic blueprint and life path",
+        "fullName": "Full Name",
+        "fullNamePlaceholder": "Enter your full name",
+        "dob": "Date of Birth",
+        "tob": "Time of Birth",
+        "pob": "Place of Birth",
+        "pobPlaceholder": "City, Country",
+        "yourZodiacSign": "Your Zodiac Sign:",
+        "interpretKundali": "Interpret Kundali",
+        "interpreting": "Interpreting Kundali...",
+        "readingCosmic": "Reading the cosmic energies...",
+        "kundaliFor": "For {{name}}",
+        "errors": {
+            "apiKeyMissing": "Please set your Gemini API key in the settings first!",
+            "fillAllFields": "Please fill in all fields",
+            "unknown": "Unknown error occurred"
+        },
+        "resultTitle": "Your Kundali Interpretation"
+    },
+    "knowYourself": {
+        "title": "🌟 Know Yourself",
+        "subtitle": "Explore the secrets of your zodiac sign",
+        "chooseSign": "Choose Your Zodiac Sign",
+        "selectSignDescription": "Select a sign above to discover deep insights about personality, strengths, and life guidance",
+        "loading": "Gathering cosmic insights about {{sign}}...",
+        "exploreAnother": "Explore Another Sign",
+        "errors": {
+            "apiKeyMissing": "Please set your Gemini API key in the settings first!",
+            "unknown": "Error generating zodiac insights. Please check your connection and try again."
+        },
+        "insightsTitle": "{{sign}} Insights"
+    },
+    "zodiac": {
+        "Aries": {
+            "label": "Aries",
+            "emoji": "♈",
+            "dates": "Mar 21 - Apr 19"
+        },
+        "Taurus": {
+            "label": "Taurus",
+            "emoji": "♉",
+            "dates": "Apr 20 - May 20"
+        },
+        "Gemini": {
+            "label": "Gemini",
+            "emoji": "♊",
+            "dates": "May 21 - Jun 20"
+        },
+        "Cancer": {
+            "label": "Cancer",
+            "emoji": "♋",
+            "dates": "Jun 21 - Jul 22"
+        },
+        "Leo": {
+            "label": "Leo",
+            "emoji": "♌",
+            "dates": "Jul 23 - Aug 22"
+        },
+        "Virgo": {
+            "label": "Virgo",
+            "emoji": "♍",
+            "dates": "Aug 23 - Sep 22"
+        },
+        "Libra": {
+            "label": "Libra",
+            "emoji": "♎",
+            "dates": "Sep 23 - Oct 22"
+        },
+        "Scorpio": {
+            "label": "Scorpio",
+            "emoji": "♏",
+            "dates": "Oct 23 - Nov 21"
+        },
+        "Sagittarius": {
+            "label": "Sagittarius",
+            "emoji": "♐",
+            "dates": "Nov 22 - Dec 21"
+        },
+        "Capricorn": {
+            "label": "Capricorn",
+            "emoji": "♑",
+            "dates": "Dec 22 - Jan 19"
+        },
+        "Aquarius": {
+            "label": "Aquarius",
+            "emoji": "♒",
+            "dates": "Jan 20 - Feb 18"
+        },
+        "Pisces": {
+            "label": "Pisces",
+            "emoji": "♓",
+            "dates": "Feb 19 - Mar 20"
+        }
+    },
+    "chat": {
+        "title": "💫 Chat with Rashiva",
+        "subtitle": "Your spiritual AI guide",
+        "placeholder": "Ask me anything about astrology, life, or the cosmos...",
+        "send": "Send",
+        "clearConfirm": "Are you sure you want to clear all chat history?",
+        "defaultMessage": "Namaste! I am Rashiva, your spiritual guide through the cosmic realm. How may I illuminate your path today?",
+        "typing": "Astrologer is typing...",
+        "errors": {
+            "apiKeyMissing": "Please set your Gemini API key in the settings first!",
+            "connection": "I apologize, but I am having trouble connecting to the cosmic energies right now. Please check your internet or refresh the page."
+        },
+        "clearHistory": "Clear History"
+    },
+    "footer": {
+        "madeBy": "Made by Samir 🌙"
+    }
+}

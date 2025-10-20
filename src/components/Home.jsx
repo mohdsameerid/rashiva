@@ -1,4 +1,5 @@
 
+import { t } from 'i18next';
 import React from 'react';
 
 const Home = ({ setActiveSection }) => {
@@ -37,10 +38,10 @@ const Home = ({ setActiveSection }) => {
         <div className="animate-fade-in">
             <div className="text-center mb-12">
                 <h1 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-yellow-200 via-pink-200 to-purple-200 bg-clip-text text-transparent">
-                    Welcome to Rashiva
+                    {t("welcome")}
                 </h1>
                 <p className="text-xl text-purple-200 max-w-2xl mx-auto">
-                    Your personal cosmic guide to understanding yourself and the universe. Discover insights, find compatibility, and explore your destiny.
+                    {t("subtitle")}
                 </p>
             </div>
 
@@ -54,10 +55,15 @@ const Home = ({ setActiveSection }) => {
                         <div className={`text-6xl mb-4 inline-block bg-gradient-to-br ${feature.gradient} p-4 rounded-xl`}>
                             {feature.icon}
                         </div>
-                        <h2 className="text-2xl font-bold mb-3 text-white">{feature.title}</h2>
-                        <p className="text-purple-100 leading-relaxed">{feature.description}</p>
+                        <h2 className="text-2xl font-bold mb-3 text-white">
+                            {t(`features.${feature.id}.title`)}
+                        </h2>
+                        <p className="text-purple-100 leading-relaxed">
+                            {t(`features.${feature.id}.description`)}
+
+                        </p>
                         <button className="mt-6 px-6 py-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg font-semibold hover:from-purple-600 hover:to-pink-600 transition-all">
-                            Explore Now
+                            {t("exploreNow")}
                         </button>
                     </div>
                 ))}

@@ -6,9 +6,11 @@ import MakeKundali from './components/MakeKundali';
 import MatchKundali from './components/MatchKundali';
 import KnowYourself from './components/KnowYourself';
 import './App.css'
+import LanguageSelector from './components/LanguageSelector';
+import { t } from 'i18next';
 
 function App() {
-  const [activeSection, setActiveSection] = useState('home');
+  const [activeSection, setActiveSection] = useState(localStorage.getItem('activeState') || 'home');
   const [apiKey, setApiKey] = useState('');
   const [showApiKeyModal, setShowApiKeyModal] = useState(false);
   const [tempApiKey, setTempApiKey] = useState('');
@@ -34,11 +36,10 @@ function App() {
   };
 
   const navItems = [
-    { id: 'home', label: 'Home', icon: '🏠' },
-    { id: 'chat', label: 'Chat', icon: '💬' },
-    { id: 'make-kundali', label: 'Make Kundali', icon: '⭐' },
-    // { id: 'match-kundali', label: 'Match Kundali', icon: '💕' },
-    { id: 'know-yourself', label: 'Know Yourself', icon: '🌟' }
+    { id: 'home', labelKey: 'home', icon: '🏠' },
+    { id: 'chat', labelKey: 'chat', icon: '💬' },
+    { id: 'make-kundali', labelKey: 'make-kundali', icon: '⭐' },
+    { id: 'know-yourself', labelKey: 'know-yourself', icon: '🌟' }
   ];
 
   const renderContent = () => {
@@ -58,6 +59,11 @@ function App() {
     }
   };
 
+  const handleActiveSectionChange = (sectionId) => {
+    setActiveSection(sectionId);
+    window.localStorage.setItem('activeState', sectionId);
+  }
+
   return (
     <div className="min-h-screen">
       <nav className="bg-black/30 backdrop-blur-lg border-b border-white/10 sticky top-0 z-50">
@@ -71,7 +77,7 @@ function App() {
                   setIsMobileMenuOpen(false);
                 }}
               >
-                Rashiva
+                {t("brand")}
               </h1>
             </div>
 
@@ -82,6 +88,7 @@ function App() {
                   onClick={() => {
                     setActiveSection(item.id);
                     setIsMobileMenuOpen(false);
+                    handleActiveSectionChange && handleActiveSectionChange(item.id);
                   }}
                   className={`px-4 py-2 rounded-lg transition-all flex items-center gap-2 ${activeSection === item.id
                     ? 'bg-purple-500 text-white'
@@ -89,9 +96,10 @@ function App() {
                     }`}
                 >
                   <span>{item.icon}</span>
-                  <span className="font-semibold">{item.label}</span>
+                  <span className="font-semibold">{t(`nav.${item.labelKey}`)}</span>
                 </button>
               ))}
+              <LanguageSelector activeSection={activeSection} setActiveSection={setActiveSection} />
               {/* <button
                 onClick={() => setShowApiKeyModal(true)}
                 className="ml-2 px-4 py-2 bg-yellow-500/20 hover:bg-yellow-500/30 rounded-lg transition-all border border-yellow-500/30 flex items-center gap-2"
@@ -131,9 +139,10 @@ function App() {
                     }`}
                 >
                   <span>{item.icon}</span>
-                  <span className="font-semibold">{item.label}</span>
+                  <span className="font-semibold">{t(`nav.${item.labelKey}`)}</span>
                 </button>
               ))}
+              <LanguageSelector activeSection={activeSection} setActiveSection={setActiveSection} />
               {/* <button
                 onClick={() => {
                   setShowApiKeyModal(true);
@@ -144,6 +153,7 @@ function App() {
                 <span>{apiKey ? '✓' : '⚙️'}</span>
                 <span className="font-semibold">Settings</span>
               </button> */}
+
             </div>
           )}
         </div>
@@ -154,7 +164,7 @@ function App() {
       </main>
 
       <footer className="mt-16 py-6 text-center text-purple-200 border-t border-white/10">
-        <p className="text-sm">Made by Samir 🌙</p>
+        <p className="text-sm">{t('footer.madeBy')}</p>
       </footer>
 
       {showApiKeyModal && (

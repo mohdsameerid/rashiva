@@ -1,8 +1,9 @@
-
 import React, { useState, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { generateAstroResponse } from '../utils/gemini';
 
 const Chat = ({ apiKey }) => {
+    const { t } = useTranslation();
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState('');
     const [isTyping, setIsTyping] = useState(false);
@@ -13,14 +14,9 @@ const Chat = ({ apiKey }) => {
         if (savedMessages) {
             setMessages(JSON.parse(savedMessages));
         } else {
-            setMessages([
-                {
-                    role: 'assistant',
-                    content: 'Namaste! I am Rashiva, your spiritual guide through the cosmic realm. How may I illuminate your path today?'
-                }
-            ]);
+            setMessages([{ role: 'assistant', content: t('chat.defaultMessage') }]);
         }
-    }, []);
+    }, [t]);
 
     useEffect(() => {
         if (messages.length > 0) {
@@ -31,11 +27,7 @@ const Chat = ({ apiKey }) => {
 
     const handleSend = async () => {
         if (!input.trim() || isTyping) return;
-
-        if (!apiKey) {
-            alert('Please set your Gemini API key in the settings first!');
-            return;
-        }
+        if (!apiKey) return alert(t('chat.errors.apiKeyMissing'));
 
         const userMessage = { role: 'user', content: input };
         setMessages(prev => [...prev, userMessage]);
@@ -46,17 +38,14 @@ const Chat = ({ apiKey }) => {
             const response = await generateAstroResponse(input);
             setMessages(prev => [...prev, { role: 'assistant', content: response }]);
         } catch (error) {
-            console.error('Error generating response:', error);
-            setMessages(prev => [...prev, {
-                role: 'assistant',
-                content: 'I apologize, but I am having trouble connecting to the cosmic energies right now. Please check your internet or refresh the page.'
-            }]);
+            console.error(error);
+            setMessages(prev => [...prev, { role: 'assistant', content: t('chat.errors.connection') }]);
         } finally {
             setIsTyping(false);
         }
     };
 
-    const handleKeyPress = (e) => {
+    const handleKeyPress = e => {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
             handleSend();
@@ -64,13 +53,8 @@ const Chat = ({ apiKey }) => {
     };
 
     const clearHistory = () => {
-        if (window.confirm('Are you sure you want to clear all chat history?')) {
-            setMessages([
-                {
-                    role: 'assistant',
-                    content: 'Namaste! I am Rashiva, your spiritual guide through the cosmic realm. How may I illuminate your path today?'
-                }
-            ]);
+        if (window.confirm(t('chat.clearConfirm'))) {
+            setMessages([{ role: 'assistant', content: t('chat.defaultMessage') }]);
             localStorage.removeItem('astro-chat-history');
         }
     };
@@ -79,16 +63,14 @@ const Chat = ({ apiKey }) => {
         <div className="flex flex-col h-[calc(100vh-12rem)] max-w-4xl mx-auto animate-fade-in">
             <div className="bg-white/10 backdrop-blur-lg rounded-t-2xl p-4 border border-white/20 border-b-0 flex justify-between items-center">
                 <div>
-                    <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-                        <span>💫</span> Chat with Rashiva
-                    </h2>
-                    <p className="text-purple-200 text-sm">Your spiritual AI guide</p>
+                    <h2 className="text-2xl font-bold text-white flex items-center gap-2">{t('chat.title')}</h2>
+                    <p className="text-purple-200 text-sm">{t('chat.subtitle')}</p>
                 </div>
                 <button
                     onClick={clearHistory}
                     className="px-4 py-2 bg-red-500/20 hover:bg-red-500/30 rounded-lg text-sm transition-all border border-red-500/30"
                 >
-                    Clear History
+                    {t('chat.clearHistory')}
                 </button>
             </div>
 
@@ -107,7 +89,7 @@ const Chat = ({ apiKey }) => {
                             {message.role === 'assistant' && (
                                 <div className="flex items-center gap-2 mb-2 text-yellow-200">
                                     <span className="text-xl">🔮</span>
-                                    <span className="font-semibold text-sm">Rashiva</span>
+                                    <span className="font-semibold text-sm">  {t("brand")}</span>
                                 </div>
                             )}
                             <p className="whitespace-pre-wrap leading-relaxed">{message.content}</p>
@@ -120,13 +102,13 @@ const Chat = ({ apiKey }) => {
                         <div className="bg-white/10 rounded-2xl p-4 border border-white/20">
                             <div className="flex items-center gap-2 mb-2 text-yellow-200">
                                 <span className="text-xl">🔮</span>
-                                <span className="font-semibold text-sm">Rashiva</span>
+                                <span className="font-semibold text-sm">  {t("brand")}</span>
                             </div>
                             <div className="flex gap-2 items-center text-purple-200">
                                 <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce"></div>
                                 <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                                 <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
-                                <span className="ml-2 text-sm">Astrologer is typing...</span>
+                                <span className="ml-2 text-sm">{t('chat.typing')}</span>
                             </div>
                         </div>
                     </div>
@@ -140,9 +122,9 @@ const Chat = ({ apiKey }) => {
                     <input
                         type="text"
                         value={input}
-                        onChange={(e) => setInput(e.target.value)}
+                        onChange={e => setInput(e.target.value)}
                         onKeyPress={handleKeyPress}
-                        placeholder="Ask me anything about astrology, life, or the cosmos..."
+                        placeholder={t('chat.placeholder')}
                         className="flex-1 bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
                         disabled={isTyping}
                     />
@@ -151,7 +133,7 @@ const Chat = ({ apiKey }) => {
                         disabled={isTyping || !input.trim()}
                         className="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl font-semibold hover:from-purple-600 hover:to-pink-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                        Send
+                        {t('chat.send')}
                     </button>
                 </div>
             </div>
