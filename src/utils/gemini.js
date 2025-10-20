@@ -1,6 +1,10 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import { getlocalStorageSelectedLanguage } from './apphelper';
 
 let genAI = import.meta.env.VITE_GOOGLE_GEMINI_KEY;
+
+const language = getlocalStorageSelectedLanguage();
+const langNote = language === 'hi' ? 'Answer in Hindi.' : 'Answer in English.';
 
 // Initialize Gemini API
 export const initializeGemini = (apiKey) => {
@@ -31,6 +35,8 @@ ${context}
 
     const fullPrompt = `
 ${astroContext}
+
+${langNote}
 
 User: ${prompt}
 
@@ -77,6 +83,8 @@ Describe their astrological makeup with warmth and depth.
     const fullPrompt = `
 ${astroContext}
 
+${langNote}
+
 User: ${prompt}
 
 Rashiva:
@@ -101,7 +109,7 @@ export const matchKundali = async (person1, person2) => {
 
   Please analyze their astrological compatibility. Provide a compatibility percentage and detailed insights
   about their relationship dynamics, emotional connection, strengths as a couple, potential challenges,
-  and advice for harmony.`;
+  and advice for harmony. ${langNote}`;
 
     return generateAstroResponse(prompt, 'Focus on relationship compatibility and cosmic connection.', 500);
 };
@@ -122,6 +130,8 @@ export const generateZodiacInsightsResponse = async (prompt, context = '') => {
 
     const fullPrompt = `
          ${astroContext}
+
+         ${langNote}
          
          User: ${prompt}
          
@@ -144,6 +154,7 @@ export const getZodiacInsights = async (zodiacSign) => {
              Ah, let's talk about ${zodiacSign}. 
              Describe its personality, emotional nature, strengths, challenges, love life, career energy, lucky color and number, and one gentle advice — 
              but say it conversationally, as if Rashiva is speaking directly to the user.
+             ${langNote}
          `;
 
     return generateZodiacInsightsResponse(prompt, `Provide human-like insights about ${zodiacSign} sign.`);
