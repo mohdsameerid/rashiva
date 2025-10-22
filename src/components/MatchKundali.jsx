@@ -1,45 +1,24 @@
 import React, { useState } from 'react';
 import { matchKundali } from '../utils/gemini';
+import { useTranslation } from 'react-i18next';
 
 const MatchKundali = ({ apiKey }) => {
-    const [person1, setPerson1] = useState({
-        name: '',
-        dob: '',
-        tob: '',
-        pob: ''
-    });
-
-    const [person2, setPerson2] = useState({
-        name: '',
-        dob: '',
-        tob: '',
-        pob: ''
-    });
-
+    const { t } = useTranslation();
+    const [person1, setPerson1] = useState({ name: '', dob: '', tob: '', pob: '' });
+    const [person2, setPerson2] = useState({ name: '', dob: '', tob: '', pob: '' });
     const [result, setResult] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
     const handleChange = (person, field, value) => {
-        if (person === 1) {
-            setPerson1({ ...person1, [field]: value });
-        } else {
-            setPerson2({ ...person2, [field]: value });
-        }
+        if (person === 1) setPerson1({ ...person1, [field]: value });
+        else setPerson2({ ...person2, [field]: value });
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        if (!apiKey) {
-            alert('Please set your Gemini API key in the settings first!');
-            return;
-        }
-
-        if (!person1.name || !person1.dob || !person1.tob || !person1.pob ||
-            !person2.name || !person2.dob || !person2.tob || !person2.pob) {
-            alert('Please fill in all fields for both persons');
-            return;
-        }
+        if (!apiKey) return alert('Please set your Gemini API key in the settings first!');
+        if (!Object.values(person1).every(Boolean) || !Object.values(person2).every(Boolean))
+            return alert('Please fill in all fields for both persons');
 
         setIsLoading(true);
         setResult(null);
@@ -58,23 +37,23 @@ const MatchKundali = ({ apiKey }) => {
     const renderForm = (personNum, personData) => (
         <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
             <h3 className="text-xl font-bold text-yellow-200 mb-4 flex items-center gap-2">
-                <span>{personNum === 1 ? '👤' : '👥'}</span> Person {personNum === 1 ? 'A' : 'B'}
+                <span>{personNum === 1 ? '👤' : '👥'}</span> {personNum === 1 ? t('matchKundali.personA') : t('matchKundali.personB')}
             </h3>
 
             <div className="space-y-4">
                 <div>
-                    <label className="block text-purple-100 mb-2 text-sm font-semibold">Full Name</label>
+                    <label className="block text-purple-100 mb-2 text-sm font-semibold">{t('matchKundali.fullName')}</label>
                     <input
                         type="text"
                         value={personData.name}
                         onChange={(e) => handleChange(personNum, 'name', e.target.value)}
-                        placeholder="Enter full name"
+                        placeholder={t('matchKundali.enterName')}
                         className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-2 text-white placeholder-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
                     />
                 </div>
 
                 <div>
-                    <label className="block text-purple-100 mb-2 text-sm font-semibold">Date of Birth</label>
+                    <label className="block text-purple-100 mb-2 text-sm font-semibold">{t('matchKundali.dob')}</label>
                     <input
                         type="date"
                         value={personData.dob}
@@ -84,7 +63,7 @@ const MatchKundali = ({ apiKey }) => {
                 </div>
 
                 <div>
-                    <label className="block text-purple-100 mb-2 text-sm font-semibold">Time of Birth</label>
+                    <label className="block text-purple-100 mb-2 text-sm font-semibold">{t('matchKundali.tob')}</label>
                     <input
                         type="time"
                         value={personData.tob}
@@ -94,12 +73,12 @@ const MatchKundali = ({ apiKey }) => {
                 </div>
 
                 <div>
-                    <label className="block text-purple-100 mb-2 text-sm font-semibold">Place of Birth</label>
+                    <label className="block text-purple-100 mb-2 text-sm font-semibold">{t('matchKundali.pob')}</label>
                     <input
                         type="text"
                         value={personData.pob}
                         onChange={(e) => handleChange(personNum, 'pob', e.target.value)}
-                        placeholder="City, Country"
+                        placeholder={t('matchKundali.enterPlace')}
                         className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-2 text-white placeholder-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
                     />
                 </div>
@@ -111,9 +90,9 @@ const MatchKundali = ({ apiKey }) => {
         <div className="max-w-6xl mx-auto animate-fade-in">
             <div className="text-center mb-8">
                 <h2 className="text-4xl font-bold mb-3 bg-gradient-to-r from-pink-200 to-red-200 bg-clip-text text-transparent">
-                    💕 Match Kundali
+                    {t('matchKundali.title')}
                 </h2>
-                <p className="text-purple-200">Discover your cosmic compatibility</p>
+                <p className="text-purple-200">{t('matchKundali.subtitle')}</p>
             </div>
 
             <form onSubmit={handleSubmit}>
@@ -127,7 +106,7 @@ const MatchKundali = ({ apiKey }) => {
                     disabled={isLoading}
                     className="w-full py-4 bg-gradient-to-r from-pink-500 to-red-500 rounded-xl font-bold text-lg hover:from-pink-600 hover:to-red-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                    {isLoading ? 'Analyzing Compatibility...' : 'Check Compatibility'}
+                    {isLoading ? t('matchKundali.analyzing') : t('matchKundali.checkCompatibility')}
                 </button>
             </form>
 
@@ -136,7 +115,7 @@ const MatchKundali = ({ apiKey }) => {
                     <div className="flex justify-center mb-4">
                         <div className="w-16 h-16 border-4 border-pink-500 border-t-transparent rounded-full animate-spin"></div>
                     </div>
-                    <p className="text-purple-200">Consulting the stars about your connection...</p>
+                    <p className="text-purple-200">{t('matchKundali.consulting')}</p>
                 </div>
             )}
 
@@ -145,7 +124,7 @@ const MatchKundali = ({ apiKey }) => {
                     <div className="flex items-center gap-3 mb-6">
                         <span className="text-4xl">💝</span>
                         <div>
-                            <h3 className="text-2xl font-bold text-pink-200">Compatibility Report</h3>
+                            <h3 className="text-2xl font-bold text-pink-200">{t('matchKundali.compatibilityReport')}</h3>
                             <p className="text-purple-200 text-sm">{person1.name} & {person2.name}</p>
                         </div>
                     </div>
