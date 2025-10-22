@@ -13,6 +13,10 @@
         "know-yourself": {
             "title": "Know Yourself",
             "description": "Explore your zodiac sign and uncover the secrets of your cosmic identity."
+        },
+        "match-kundali": {
+            "title": "Match Kundali",
+            "description": "Discover your compatibility with someone special. Get detailed relationship insights and guidance."
         }
     },
     "exploreNow": "Explore Now",
@@ -20,7 +24,8 @@
         "home": "Home",
         "chat": "Chat",
         "make-kundali": "Make Kundali",
-        "know-yourself": "Know Yourself"
+        "know-yourself": "Know Yourself",
+        "match-kundali": "Match Kundali"
     },
     "brand": "Rashiva",
     "makeKundali": {
@@ -135,5 +140,21 @@
     },
     "footer": {
         "madeBy": "Made by Samir 🌙"
+    },
+    "matchKundali": {
+        "title": "💕 Match Kundali",
+        "subtitle": "Discover your cosmic compatibility",
+        "personA": "Person A",
+        "personB": "Person B",
+        "fullName": "Full Name",
+        "dob": "Date of Birth",
+        "tob": "Time of Birth",
+        "pob": "Place of Birth",
+        "enterName": "Enter full name",
+        "enterPlace": "City, Country",
+        "checkCompatibility": "Check Compatibility",
+        "analyzing": "Analyzing Compatibility...",
+        "consulting": "Consulting the stars about your connection...",
+        "compatibilityReport": "Compatibility Report"
     }
 }

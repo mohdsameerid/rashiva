@@ -38,6 +38,7 @@ function App() {
   const navItems = [
     { id: 'home', labelKey: 'home', icon: '🏠' },
     { id: 'chat', labelKey: 'chat', icon: '💬' },
+    { id: 'match-kundali', labelKey: 'match-kundali', icon: '💕' },
     { id: 'make-kundali', labelKey: 'make-kundali', icon: '⭐' },
     { id: 'know-yourself', labelKey: 'know-yourself', icon: '🌟' }
   ];
