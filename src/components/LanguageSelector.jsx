@@ -27,7 +27,7 @@ const LanguageSelector = () => {
                     }`}
                 onClick={() => handleLanguageChange('en')}
             >
-                Eng
+                En
             </button>
             <button
                 className={`px-3 py-1 rounded-full transition-colors duration-200 ${language === 'hi' ? 'bg-blue-500 text-white' : 'bg-transparent text-gray-700 hover:bg-gray-200 cursor-pointer'
