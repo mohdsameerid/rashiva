@@ -1,0 +1,160 @@
+{
+    "welcome": "Bienvenido a Rashiva",
+    "subtitle": "Tu guía cósmica personal para comprenderte a ti mismo y al universo. Descubre ideas, encuentra compatibilidad y explora tu destino.",
+    "features": {
+        "chat": {
+            "title": "Chatea con el Astrólogo IA",
+            "description": "Ten una conversación personal con nuestra guía espiritual impulsada por IA. Haz preguntas, busca orientación y explora el cosmos."
+        },
+        "make-kundali": {
+            "title": "Crea tu Kundali",
+            "description": "Genera tu carta natal personalizada y recibe profundos conocimientos sobre tu personalidad y camino de vida."
+        },
+        "know-yourself": {
+            "title": "Conócete a ti mismo",
+            "description": "Explora tu signo zodiacal y descubre los secretos de tu identidad cósmica."
+        },
+        "match-kundali": {
+            "title": "Compatibilidad de Kundali",
+            "description": "Descubre tu compatibilidad con alguien especial. Obtén información detallada sobre la relación y orientación espiritual."
+        }
+    },
+    "exploreNow": "Explorar ahora",
+    "nav": {
+        "home": "Inicio",
+        "chat": "Chat",
+        "make-kundali": "Crear Kundali",
+        "know-yourself": "Conócete",
+        "match-kundali": "Comparar Kundali"
+    },
+    "brand": "Rashiva",
+    "makeKundali": {
+        "title": "⭐ Crea tu Kundali",
+        "subtitle": "Descubre tu mapa cósmico y camino de vida",
+        "fullName": "Nombre completo",
+        "fullNamePlaceholder": "Ingresa tu nombre completo",
+        "dob": "Fecha de nacimiento",
+        "tob": "Hora de nacimiento",
+        "pob": "Lugar de nacimiento",
+        "pobPlaceholder": "Ciudad, País",
+        "yourZodiacSign": "Tu signo zodiacal:",
+        "interpretKundali": "Interpretar Kundali",
+        "interpreting": "Interpretando Kundali...",
+        "readingCosmic": "Leyendo las energías cósmicas...",
+        "kundaliFor": "Para {{name}}",
+        "errors": {
+            "apiKeyMissing": "¡Por favor, configura tu clave API de Gemini en los ajustes primero!",
+            "fillAllFields": "Por favor, completa todos los campos",
+            "unknown": "Ocurrió un error desconocido"
+        },
+        "resultTitle": "Tu interpretación de Kundali"
+    },
+    "knowYourself": {
+        "title": "🌟 Conócete a ti mismo",
+        "subtitle": "Explora los secretos de tu signo zodiacal",
+        "chooseSign": "Elige tu signo zodiacal",
+        "selectSignDescription": "Selecciona un signo arriba para descubrir conocimientos profundos sobre la personalidad, fortalezas y guía de vida",
+        "loading": "Recolectando ideas cósmicas sobre {{sign}}...",
+        "exploreAnother": "Explorar otro signo",
+        "errors": {
+            "apiKeyMissing": "¡Por favor, configura tu clave API de Gemini en los ajustes primero!",
+            "unknown": "Error al generar información del zodiaco. Verifica tu conexión e inténtalo de nuevo."
+        },
+        "insightsTitle": "Perspectivas de {{sign}}"
+    },
+    "zodiac": {
+        "Aries": {
+            "label": "Aries",
+            "emoji": "♈",
+            "dates": "21 Mar - 19 Abr"
+        },
+        "Taurus": {
+            "label": "Tauro",
+            "emoji": "♉",
+            "dates": "20 Abr - 20 May"
+        },
+        "Gemini": {
+            "label": "Géminis",
+            "emoji": "♊",
+            "dates": "21 May - 20 Jun"
+        },
+        "Cancer": {
+            "label": "Cáncer",
+            "emoji": "♋",
+            "dates": "21 Jun - 22 Jul"
+        },
+        "Leo": {
+            "label": "Leo",
+            "emoji": "♌",
+            "dates": "23 Jul - 22 Ago"
+        },
+        "Virgo": {
+            "label": "Virgo",
+            "emoji": "♍",
+            "dates": "23 Ago - 22 Sep"
+        },
+        "Libra": {
+            "label": "Libra",
+            "emoji": "♎",
+            "dates": "23 Sep - 22 Oct"
+        },
+        "Scorpio": {
+            "label": "Escorpio",
+            "emoji": "♏",
+            "dates": "23 Oct - 21 Nov"
+        },
+        "Sagittarius": {
+            "label": "Sagitario",
+            "emoji": "♐",
+            "dates": "22 Nov - 21 Dic"
+        },
+        "Capricorn": {
+            "label": "Capricornio",
+            "emoji": "♑",
+            "dates": "22 Dic - 19 Ene"
+        },
+        "Aquarius": {
+            "label": "Acuario",
+            "emoji": "♒",
+            "dates": "20 Ene - 18 Feb"
+        },
+        "Pisces": {
+            "label": "Piscis",
+            "emoji": "♓",
+            "dates": "19 Feb - 20 Mar"
+        }
+    },
+    "chat": {
+        "title": "💫 Chatea con Rashiva",
+        "subtitle": "Tu guía espiritual con IA",
+        "placeholder": "Pregúntame cualquier cosa sobre astrología, la vida o el cosmos...",
+        "send": "Enviar",
+        "clearConfirm": "¿Estás seguro de que deseas borrar todo el historial de chat?",
+        "defaultMessage": "¡Namasté! Soy Rashiva, tu guía espiritual a través del reino cósmico. ¿Cómo puedo iluminar tu camino hoy?",
+        "typing": "El astrólogo está escribiendo...",
+        "errors": {
+            "apiKeyMissing": "¡Por favor, configura tu clave API de Gemini en los ajustes primero!",
+            "connection": "Lo siento, estoy teniendo dificultades para conectarme con las energías cósmicas en este momento. Verifica tu conexión a internet o actualiza la página."
+        },
+        "clearHistory": "Borrar historial"
+    },
+    "footer": {
+        "madeBy": "Hecho por Samir 🌙"
+    },
+    "matchKundali": {
+        "title": "💕 Compatibilidad de Kundali",
+        "subtitle": "Descubre tu compatibilidad cósmica",
+        "personA": "Persona A",
+        "personB": "Persona B",
+        "fullName": "Nombre completo",
+        "dob": "Fecha de nacimiento",
+        "tob": "Hora de nacimiento",
+        "pob": "Lugar de nacimiento",
+        "enterName": "Ingresa el nombre completo",
+        "enterPlace": "Ciudad, País",
+        "checkCompatibility": "Comprobar compatibilidad",
+        "analyzing": "Analizando compatibilidad...",
+        "consulting": "Consultando a las estrellas sobre tu conexión...",
+        "compatibilityReport": "Informe de compatibilidad"
+    }
+}

@@ -4,38 +4,26 @@ import { getlocalStorageSelectedLanguage } from "../utils/apphelper";
 
 const LanguageSelector = () => {
     const { i18n } = useTranslation();
-    const language = getlocalStorageSelectedLanguage();
+    const language = getlocalStorageSelectedLanguage() || "en";
 
-    const handleLanguageChange = (lang) => {
+    const handleLanguageChange = (e) => {
+        const lang = e.target.value;
         i18n.changeLanguage(lang);
         loadLanguage(lang);
-
-        // setTimeout(() => {
-        //     const state = localStorage.getItem('activeState');
-        //     setActiveSection(state);
-        // }, 200);
-
         window.location.reload();
-
-        // return clearTimeout(res);
     };
 
     return (
-        <div className="flex items-center space-x-2 bg-gray-100 p-1 rounded-full w-max">
-            <button
-                className={`px-3 py-1 rounded-full transition-colors duration-200 ml-0  ${language === 'en' ? 'bg-blue-500 text-white' : 'bg-transparent text-gray-700 hover:bg-gray-200 cursor-pointer'
-                    }`}
-                onClick={() => handleLanguageChange('en')}
+        <div className="flex items-center bg-gray-100 p-2 rounded-full w-max">
+            <select
+                value={language}
+                onChange={handleLanguageChange}
+                className="bg-transparent text-gray-800 outline-none cursor-pointer px-2 py-1 rounded-full hover:bg-gray-200 transition-colors duration-200"
             >
-                En
-            </button>
-            <button
-                className={`px-3 py-1 rounded-full transition-colors duration-200 ${language === 'hi' ? 'bg-blue-500 text-white' : 'bg-transparent text-gray-700 hover:bg-gray-200 cursor-pointer'
-                    }`}
-                onClick={() => handleLanguageChange('hi')}
-            >
-                हिं
-            </button>
+                <option value="en">English</option>
+                <option value="hi">हिंदी</option>
+                <option value="es">Español</option>
+            </select>
         </div>
     );
 };
