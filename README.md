@@ -45,6 +45,7 @@ It offers personalized Kundali (birth chart) interpretations, cosmic insights, s
 |-----------|------|-------------|
 | English   | `en`  | Default language |
 | Hindi     | `hi`  | Translated content for broader reach |
+| Spanish     | `es`  | Translated content for broader reach |
 
 Switch between languages instantly with a smooth Tailwind-styled **language switcher**.
 
