@@ -4,7 +4,9 @@ import { getlocalStorageSelectedLanguage } from './apphelper';
 let genAI = import.meta.env.VITE_GOOGLE_GEMINI_KEY;
 
 const language = getlocalStorageSelectedLanguage();
-const langNote = language === 'hi' ? 'Answer in Hindi.' : 'Answer in English.';
+const langNote = language === 'hi' ? 'Answer in Hindi.'
+    : language === 'es' ? 'Answer in Spanish.'
+        : 'Answer in English.';
 
 // Initialize Gemini API
 export const initializeGemini = (apiKey) => {
