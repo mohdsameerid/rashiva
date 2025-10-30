@@ -1,25 +1,25 @@
-// i18n.js
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import en from './en.json';
 import hi from './hi.json';
+import es from './es.json'; // ✅ Add Spanish file
 
-// All translations loaded statically
+// ✅ Add 'es' to your resources
 const resources = {
     en: { translation: en },
     hi: { translation: hi },
+    es: { translation: es },
 };
 
-// Initialize i18next
 i18n.use(initReactI18next).init({
     resources,
-    lng: localStorage.getItem('language') || 'en', // default or saved language
+    lng: localStorage.getItem('language') || 'en',
     fallbackLng: 'en',
     interpolation: { escapeValue: false },
     react: { useSuspense: false },
 });
 
-// Helper to switch language
+// ✅ Updated loadLanguage to include 'es'
 export const loadLanguage = (lang) => {
     if (resources[lang]) {
         i18n.changeLanguage(lang);
@@ -29,8 +29,6 @@ export const loadLanguage = (lang) => {
     }
 };
 
-// Preload selected language on app start
-// i18n.js
 export const preloadSelectedLanguage = () => {
     return new Promise((resolve) => {
         const lang = localStorage.getItem('language') || 'en';
