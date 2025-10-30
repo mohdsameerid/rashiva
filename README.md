@@ -19,8 +19,9 @@ It offers personalized Kundali (birth chart) interpretations, cosmic insights, s
 
 ## 🖼️ Demo
 
-![Rashiva Demo Screenshot](https://raw.githubusercontent.com/mohdsameerid/rashiva/master/src/assets/screenshot.png)  
-![Rashiva Demo Screenshot](https://raw.githubusercontent.com/mohdsameerid/rashiva/master/src/assets/screenshot2.png)
+![Rashiva Demo Screenshot](https://raw.githubusercontent.com/mohdsameerid/rashiva/master/src/assets/english.png)  
+![Rashiva Demo Screenshot](https://raw.githubusercontent.com/mohdsameerid/rashiva/master/src/assets/hindi.png)
+![Rashiva Demo Screenshot](https://raw.githubusercontent.com/mohdsameerid/rashiva/master/src/assets/spanish.png) 
 
 ---
 
